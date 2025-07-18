@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandarin Learning Progress</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>学习中文 <span class="subtitle">Learn Mandarin</span></h1>
+        </div>
+        
+        <div class="progress-container">
+            <div class="streak-container">
+                <div class="streak-flame">🔥</div>
+                <div class="streak-count" id="streak-count">0</div>
+                <div class="streak-label">Day Streak</div>
+            </div>
+            
+            <div class="level-container">
+                <div class="level-info">
+                    <div class="level-number" id="current-level">1</div>
+                    <div class="level-label">Level</div>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="current-xp">0</span>/<span id="level-xp">100</span> XP
+                    </div>
+                </div>
+                
+                <div class="level-info">
+                    <div class="level-number" id="next-level">2</div>
+                    <div class="level-label">Next</div>
+                </div>
+            </div>
+            
+            <div class="daily-goal-container">
+                <div class="daily-goal-icon">🎯</div>
+                <div class="daily-goal-progress">
+                    <div class="daily-goal-bar">
+                        <div class="daily-goal-fill" id="daily-goal-fill"></div>
+                    </div>
+                    <div class="daily-goal-text">
+                        <span id="daily-xp">0</span>/<span id="daily-goal">50</span> XP Today
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="actions-container">
+            <button class="action-button" id="complete-lesson">Complete Lesson (+10 XP)</button>
+            <button class="action-button" id="practice-characters">Practice Characters (+5 XP)</button>
+            <button class="action-button" id="review-vocabulary">Review Vocabulary (+8 XP)</button>
+            <button class="action-button" id="reset-progress">Reset Progress</button>
+        </div>
+        
+        <div class="achievements-container">
+            <h2>Recent Achievements</h2>
+            <ul class="achievements-list" id="achievements-list">
+                <!-- Achievements will be added here by JavaScript -->
+            </ul>
+        </div>
+    </div> 
+    
+    <script src="script.js"></script>
+</body>
+</html>

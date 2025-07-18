@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  color: #ff8c00;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: normal;
+}
+
+.progress-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+/* Streak styles */
+.streak-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.streak-flame {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.streak-count {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff8c00;
+}
+
+.streak-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Level progress styles */
+.level-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.level-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+}
+
+.level-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff8c00;
+  background-color: #fff3e6;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ff8c00;
+}
+
+.level-label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.progress-bar-container {
+  flex-grow: 1;
+  margin: 0 15px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #ff8c00;
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Daily goal styles */
+.daily-goal-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.daily-goal-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+.daily-goal-progress {
+  flex-grow: 1;
+}
+
+.daily-goal-bar {
+  height: 15px;
+  background-color: #f0f0f0;
+  border-radius: 7.5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.daily-goal-fill {
+  height: 100%;
+  background-color: #ff8c00;
+  width: 0%;
+  border-radius: 7.5px;
+  transition: width 0.5s ease-in-out;
+}
+
+.daily-goal-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Action buttons */
+.actions-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.action-button {
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #e67e00;
+}
+
+#reset-progress {
+  background-color: #f0f0f0;
+  color: #666;
+  grid-column: span 2;
+}
+
+#reset-progress:hover {
+  background-color: #e0e0e0;
+}
+
+/* Achievements */
+.achievements-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.achievements-container h2 {
+  color: #ff8c00;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.achievements-list {
+  list-style-type: none;
+}
+
+.achievement-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+.achievement-item:last-child {
+  border-bottom: none;
+}
+
+.achievement-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.achievement-text {
+  flex-grow: 1;
+}
+
+.achievement-time {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* Animation for XP gain */
+@keyframes xpGain {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.xp-animation {
+  animation: xpGain 0.5s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .actions-container {
+    grid-template-columns: 1fr;
+  }
+
+  #reset-progress {
+    grid-column: span 1;
+  }
+
+  .level-container {
+    flex-direction: column;
+  }
+
+  .level-info {
+    margin-bottom: 10px;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    margin: 15px 0;
+  }
+} 
