@@ -1,37 +1,71 @@
-body {
-  font-family: sans-serif;
-  text-align: center;
-  margin: 30px;
-}
+/* styles-game.css */
+/* General styles for the game interface */
 
+body {
+  background-color: #f8a288; /* Light orange background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  color: #444;
+}
+.header-image {
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+}
 .container {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
+  margin-top: 20px;
 }
-
 .list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .item {
-  padding: 10px;
-  background: #f0f0f0;
-  cursor: pointer;
+  padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s, border-color 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 150px;
+  text-align: center;
 }
-
-.item.correct {
-  background-color: lightgreen;
+.item:hover {
+  border-color: #110f0f;
 }
-
-.item.wrong {
-  background-color: rgb(174, 76, 76);
+.selected {
+  background-color: #a7d7f9;
+  border-color: #5b9dce;
 }
-
-.item.selected {
-  outline: 2px solid rgb(255, 102, 0);
+.correct {
+  background-color: #6ef883;
+  border-color: #096b14;
+  cursor: default;
+  pointer-events: none;
+}
+.wrong {
+  background-color: #ff8a80;
+  border-color: #e57373;
+}
+#nextLevelBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #ec5a0c;
+}
+#winMessage {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: green;
+  font-weight: bold;
 }
