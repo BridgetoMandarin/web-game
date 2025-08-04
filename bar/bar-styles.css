@@ -16,8 +16,26 @@ body {
   padding: 20px;
 }
 
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-button-lessons {
+  padding: 10px 15px;
+  background-color: #d8540b; /* Darker orange */
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+  font-size: 0.9em;
+}
+
 .header {
   text-align: center;
+  margin-top: 10px; /* Add some space below the button */
   margin-bottom: 30px;
 }
 
