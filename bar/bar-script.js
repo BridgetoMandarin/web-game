@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     dailyGoal: 50,
     lastLogin: new Date().toDateString(),
     achievements: [],
+    game: {
+      currentLevel: 0, // 0-indexed
+    },
   }
 
   // DOM elements
@@ -209,6 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
             date: new Date().toDateString(),
           },
         ],
+        game: {
+          currentLevel: 0,
+        },
       }
       saveUserData()
       updateUI()
