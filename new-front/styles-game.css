@@ -10,6 +10,22 @@ body {
   padding-top: 20px;
   color: #444;
 }
+
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #ec5a0c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+  font-size: 0.9em;
+}
+
 .header-image {
   width: 250px;
   height: auto;
