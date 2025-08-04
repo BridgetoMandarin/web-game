@@ -11,14 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fruit data with Chinese words and image queries
   const fruits = [
-    { name: "apple", chinese: "苹果", pinyin: "píngguǒ" },
-    { name: "banana", chinese: "香蕉", pinyin: "xiāngjiāo" },
-    { name: "orange", chinese: "橙子", pinyin: "chéngzi" },
-    { name: "strawberry", chinese: "草莓", pinyin: "cǎoméi" },
-    { name: "watermelon", chinese: "西瓜", pinyin: "xīguā" },
-    { name: "grape", chinese: "葡萄", pinyin: "pútáo" },
-    { name: "pear", chinese: "梨", pinyin: "lí" },
-    { name: "peach", chinese: "桃子", pinyin: "táozi" },
+    // IMPORTANT: Replace these placeholder URLs with the actual URLs of your images
+    // after uploading them to the Webflow Asset Manager.
+    { name: "apple", chinese: "苹果", pinyin: "píngguǒ", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911377d0c2daeb678a7cbb_apple.jpg" },
+    { name: "banana", chinese: "香蕉", pinyin: "xiāngjiāo", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911376c17e4456647f3bc8_banana.jpg" },
+    { name: "orange", chinese: "橙子", pinyin: "chéngzi", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911378f77b77beff3cb0c5_orange.jpg" },
+    { name: "strawberry", chinese: "草莓", pinyin: "cǎoméi", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911378b79d58c2e32a7d61_strawberry.jpg" },
+    { name: "watermelon", chinese: "西瓜", pinyin: "xīguā", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911377b1a8b9023f925ee8_watermelon.jpg" },
+    { name: "grape", chinese: "葡萄", pinyin: "pútáo", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/6891137812139b0005048ac5_grape.jpg" },
+    { name: "pear", chinese: "梨", pinyin: "lí", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911378fe5bf2c4be60fe61_pear.jpg" },
+    { name: "peach", chinese: "桃子", pinyin: "táozi", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911377c3ff4c6f09cd6da3_peach.jpg" },
   ]
 
   // DOM elements
@@ -80,8 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cardPairs.push({
         type: "image",
         fruit: fruit.name,
-        // Assumes you have an 'images' folder with .png files named after the fruit
-        content: `images/${fruit.name}.jpg`,
+        // Use the imageUrl from the fruits object
+        content: fruit.imageUrl,
       })
     })
 
