@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const fruits = [
     // IMPORTANT: Replace these placeholder URLs with the actual URLs of your images
     // after uploading them to the Webflow Asset Manager.
-    { name: "apple", chinese: "苹果", pinyin: "píngguǒ", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911377d0c2daeb678a7cbb_apple.jpg" },
-    { name: "banana", chinese: "香蕉", pinyin: "xiāngjiāo", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911376c17e4456647f3bc8_banana.jpg" },
-    { name: "orange", chinese: "橙子", pinyin: "chéngzi", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911378f77b77beff3cb0c5_orange.jpg" },
-    { name: "strawberry", chinese: "草莓", pinyin: "cǎoméi", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911378b79d58c2e32a7d61_strawberry.jpg" },
-    { name: "watermelon", chinese: "西瓜", pinyin: "xīguā", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911377b1a8b9023f925ee8_watermelon.jpg" },
-    { name: "grape", chinese: "葡萄", pinyin: "pútáo", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/6891137812139b0005048ac5_grape.jpg" },
-    { name: "pear", chinese: "梨", pinyin: "lí", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911378fe5bf2c4be60fe61_pear.jpg" },
-    { name: "peach", chinese: "桃子", pinyin: "táozi", imageUrl: "https://cdn.prod.website-files.com/67fd675324c1ef06636184ee/68911377c3ff4c6f09cd6da3_peach.jpg" },
+    { name: "apple", chinese: "苹果", pinyin: "píngguǒ", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/apple.jpg" },
+    { name: "banana", chinese: "香蕉", pinyin: "xiāngjiāo", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/banana.jpg" },
+    { name: "orange", chinese: "橙子", pinyin: "chéngzi", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/orange.jpg" },
+    { name: "strawberry", chinese: "草莓", pinyin: "cǎoméi", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/strawberry.jpg" },
+    { name: "watermelon", chinese: "西瓜", pinyin: "xīguā", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/watermelon.jpg" },
+    { name: "grape", chinese: "葡萄", pinyin: "pútáo", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/grape.jpg" },
+    { name: "pear", chinese: "梨", pinyin: "lí", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/pear.jpg" },
+    { name: "peach", chinese: "桃子", pinyin: "táozi", imageUrl: "https://uploads-ssl.webflow.com/path/to/your/peach.jpg" },
   ]
 
   // DOM elements
@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalTime = document.getElementById("final-time")
   const restartButton = document.getElementById("restart")
   const playAgainButton = document.getElementById("play-again")
+  const startGameButton = document.getElementById("start-game")
+  const gameWrapper = document.getElementById("game-wrapper")
 
   // Initialize game
   function initializeGame() {
@@ -239,10 +241,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return newArray
   }
 
+  // Start game function
+  function startGame() {
+    startGameButton.classList.add("hide")
+    gameWrapper.classList.remove("hide")
+    initializeGame()
+  }
+
   // Event listeners
+  startGameButton.addEventListener("click", startGame)
   restartButton.addEventListener("click", initializeGame)
   playAgainButton.addEventListener("click", initializeGame)
 
-  // Initialize game on load
-  initializeGame()
 })
