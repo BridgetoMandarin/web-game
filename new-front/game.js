@@ -1,5 +1,4 @@
 window.onload = function() {
-
   // --- Start of Shared Logic with src-bar/script.js ---
 
   // Initialize user data or load from localStorage
@@ -79,24 +78,24 @@ window.onload = function() {
     saveUserData();
   }
 
-  // --- End of Shared Logic ---
+  // // --- End of Shared Logic ---
 
- // --- Game Specific Logic ---
 
-  // Dynamically create and append game controls to the page
-  const nextLevelBtnEl = document.createElement('button');
-  nextLevelBtnEl.id = 'nextLevelBtn';
-  nextLevelBtnEl.style.display = 'none';
-  nextLevelBtnEl.textContent = 'Next Level';
+  // --- Game Specific Logic ---
 
-  const winMessageEl = document.createElement('div');
-  winMessageEl.id = 'winMessage';
-  winMessageEl.style.display = 'none';
-  winMessageEl.textContent = "Congratulations! You've completed all levels!";
+  // Create and append game controls dynamically
+  const nextLevelBtn = document.createElement('button');
+  nextLevelBtn.id = 'nextLevelBtn';
+  nextLevelBtn.style.display = 'none';
+  nextLevelBtn.textContent = 'Next Level';
 
-  // Append controls to the body. They will be styled by the existing CSS.
-  document.body.appendChild(nextLevelBtnEl);
-  document.body.appendChild(winMessageEl);
+  const winMessage = document.createElement('div');
+  winMessage.id = 'winMessage';
+  winMessage.style.display = 'none';
+  winMessage.textContent = "Congratulations! You've completed all levels!";
+
+  document.body.appendChild(nextLevelBtn);
+  document.body.appendChild(winMessage);
 
   const levels = [
     // Level 1
@@ -147,15 +146,14 @@ window.onload = function() {
     ],
   ];
 
-  let currentLevel = 0;
+  // Load the game level from the user's saved progress
+  let currentLevel = userData.game.currentLevel || 0;
   let selectedPair = null;
   let correctMatches = 0;
 
   const englishDiv = document.getElementById("englishWords");
   const chineseDiv = document.getElementById("chineseWords");
   const levelIndicator = document.getElementById("levelIndicator");
-  const nextLevelBtn = document.getElementById("nextLevelBtn");
-  const winMessage = document.getElementById("winMessage");
 
   function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
@@ -222,10 +220,15 @@ window.onload = function() {
           }
 
           if (correctMatches === wordPairs.length) {
+            // Award XP for completing the level
+            addXP(10);
+            addAchievement(`✅ Completed game level ${currentLevel + 1} +10 XP`);
+
             setTimeout(() => {
               if (currentLevel < levels.length - 1) {
                 nextLevelBtn.style.display = "block";
               } else {
+                addAchievement("🏆 Congratulations! You finished all game levels!");
                 winMessage.style.display = "block";
               }
             }, 500);
@@ -249,6 +252,9 @@ window.onload = function() {
   nextLevelBtn.onclick = () => {
     currentLevel++;
     if (currentLevel < levels.length) {
+      // Update and save the user's game level progress
+      userData.game.currentLevel = currentLevel;
+      saveUserData();
       createGame(currentLevel);
     }
   };
