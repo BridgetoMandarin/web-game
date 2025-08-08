@@ -1,17 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize user data or load from localStorage
-  let userData = JSON.parse(localStorage.getItem("mandarinProgress")) || {
-    streak: 0,
-    currentLevel: 1,
-    currentXP: 0,
-    levelXP: 100,
-    dailyXP: 0,
-    dailyGoal: 50,
-    lastLogin: new Date().toDateString(),
-    achievements: [],
-    game: {
-      currentLevel: 0, // 0-indexed
-    },
+  let userData;
+  const defaultUserData = {
+      streak: 0,
+      currentLevel: 1,
+      currentXP: 0,
+      levelXP: 100,
+      dailyXP: 0,
+      dailyGoal: 50,
+      lastLogin: new Date().toDateString(),
+      achievements: [],
+      game: {
+        currentLevel: 0, // 0-indexed
+      },
+  };
+
+  try {
+    userData = JSON.parse(localStorage.getItem("mandarinProgress")) || defaultUserData;
+  } catch (error) {
+    console.error("Could not parse user progress, resetting.", error);
+    userData = defaultUserData;
   }
 
   // DOM elements
