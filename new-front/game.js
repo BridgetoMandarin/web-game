@@ -1,4 +1,86 @@
 window.onload = function() {
+
+  // --- Start of Shared Logic with src-bar/script.js ---
+
+  // Initialize user data or load from localStorage
+  let userData;
+  const defaultUserData = {
+      streak: 0,
+      currentLevel: 1, // Profile level
+      currentXP: 0,
+      levelXP: 100,
+      dailyXP: 0,
+      dailyGoal: 50,
+      lastLogin: new Date().toDateString(),
+      achievements: [],
+      game: {
+        currentLevel: 0, // 0-indexed game level
+      },
+  };
+
+  try {
+    userData = JSON.parse(localStorage.getItem("mandarinProgress")) || defaultUserData;
+  } catch (error) {
+    console.error("Could not parse user progress, resetting.", error);
+    userData = defaultUserData;
+  }
+
+  // Save user data to localStorage
+  function saveUserData() {
+    localStorage.setItem("mandarinProgress", JSON.stringify(userData));
+  }
+
+  // Add achievement
+  function addAchievement(text) {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+    userData.achievements.unshift({
+      text: text,
+      time: timeString,
+      date: now.toDateString(),
+    });
+
+    // Keep only the last 10 achievements
+    if (userData.achievements.length > 10) {
+      userData.achievements.pop();
+    }
+    // No need to render achievements here, but we save the data
+    saveUserData();
+  }
+
+  // Level up function for the user's profile
+  function levelUp() {
+    const extraXP = userData.currentXP - userData.levelXP;
+    userData.currentLevel++;
+
+    // Increase XP required for next level
+    userData.levelXP = Math.floor(userData.levelXP * 1.5);
+    userData.currentXP = extraXP;
+
+    addAchievement("🎉 Level up! You reached level " + userData.currentLevel);
+  }
+
+  // Add XP and update progress
+  function addXP(amount) {
+    userData.currentXP += amount;
+    userData.dailyXP += amount;
+
+    // Check if profile level up
+    if (userData.currentXP >= userData.levelXP) {
+      levelUp();
+    }
+
+    // Check if daily goal achieved
+    if (userData.dailyXP >= userData.dailyGoal && userData.dailyXP - amount < userData.dailyGoal) {
+      addAchievement("🎯 Daily goal achieved! +" + userData.dailyGoal + " XP");
+    }
+
+    saveUserData();
+  }
+
+  // --- End of Shared Logic ---
+
  // --- Game Specific Logic ---
 
   // Dynamically create and append game controls to the page
